@@ -1,0 +1,4 @@
+.ShoppingListRow{
+  display:flex;
+  flex-direction:row;
+}

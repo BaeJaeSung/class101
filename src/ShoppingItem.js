@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './ShoppingItem.css';
 
 const ShoppingItem = ({item}) => {
-  const {id, title, ImgUrl, price, score} = item;
+  const {id, title, coverImage, price, score} = item;
   return(
     <div className="ShoppingItem" id={id}>
       <div className="ShoppingImg">
-        <img src="" alt="상품 이미지"/>
+      {coverImage}
+        <img src="{coverImage}" alt="상품 이미지"/>
       </div>
       <div className="ShoppingTitle">
         {title}
@@ -20,6 +22,7 @@ const ShoppingItem = ({item}) => {
       //33,444 comma
         {price}
       </div>
+      <br/>
 
     </div>
   );
