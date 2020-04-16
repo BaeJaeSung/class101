@@ -3,10 +3,51 @@ import logo from './logo.svg';
 import './App.css';
 import ShoppingList from './ShoppingList'
 
+const merge = (left, right) => {
+  console.log("left : " + left + "right : " + right);
+  var result = [];
+  while(left.length > 0 || right.length > 0){
+    if(left.length > 0 && right.length > 0){
+      if(left[0].score < right[0].score){
+        result.push(right[0]);
+        right = right.slice(1, right.length);
+      }
+      else{
+        result.push(left[0]);
+        left = left.slice(1, left.length);
+      }
+    }
+    else if(left.length > 0){
+      result.push(left[0]);
+      left = left.slice(1,left.length);
+    }
+    else if(right.length > 0){
+      result.push(right[0]);
+      right = right.slice(1,right.length);
+    }
+  }
+  console.log("result : " + result);
+  return result;
+}
 
+const mergeSort = (items) => {
+  console.log("items : " + items);
+  if(items.length <= 1){
+    return items;
+  }
 
+  const half = items.length/2;
+  var left = mergeSort(items.slice(0, half));
+  var right = mergeSort(items.slice(half, items.length));
+
+  console.log(left);
+  console.log(right);
+  return merge(left, right);
+}
 
 const App = () => {
+
+
   const [items, setItems] = useState([
     {
       id: 'B9vUv0E0ibc0X55kVVLr',
@@ -98,9 +139,11 @@ const App = () => {
       score: 220,
     }
   ]);
+
+  var new_items = mergeSort(items);
   return (
     <div>
-      <ShoppingList items={items} />
+      <ShoppingList items={new_items} />
     </div>
   );
 }
