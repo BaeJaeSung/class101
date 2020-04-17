@@ -53,10 +53,14 @@ const App = () => {
       if(cartItems.find(elm => elm==id)){
         setCartItems(cartItems.filter(cartItem => cartItem !== id));
       }else{
-        var newCartItems = [];
-        newCartItems = newCartItems.concat(cartItems);
-        newCartItems.push(id);
-        setCartItems(newCartItems);
+        if(cartItems.length >= 3){
+          //false
+        }else{
+          var newCartItems = [];
+          newCartItems = newCartItems.concat(cartItems);
+          newCartItems.push(id);
+          setCartItems(newCartItems);
+        }
       }
 
     }
