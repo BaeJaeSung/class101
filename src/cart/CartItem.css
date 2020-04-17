@@ -6,6 +6,10 @@
   align:center;
   margin-left: auto;
   margin-right: auto;
+  font-size: 1.5em;
+	background: linear-gradient(21deg, #10abff, #1beabd);
+	padding: 0px;
+	border-radius: 9999em;
 }
 .ShoppingItem{
   display:flex;
@@ -17,6 +21,7 @@
   align:center;
   margin:5px;
   text-align:center;
-
+}
+.input {
 
 }

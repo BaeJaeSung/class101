@@ -11,7 +11,7 @@ const CartItemList = ({cartItemResult, onChecked, itemChecked}) => {
   /* you can choose item which is excluded from coupon by product ID*/
   const couponExcluded = ['CNCwXwHP7FUip83z5VEH']
   // coupons.js
-  const coupons = [
+  const initial_coupons = [
     {
       type: 'rate',
       title: '10% 할인 쿠폰',
@@ -25,6 +25,16 @@ const CartItemList = ({cartItemResult, onChecked, itemChecked}) => {
       id : 2
     }
   ];
+  var coupons = [];
+  var couponIndex = 1;
+  initial_coupons.map(coupon => {
+    coupon['id']=couponIndex;
+    coupons = coupons.concat(coupon);
+    couponIndex+=1;
+  });
+  console.log(coupons);
+
+
 
   /* which one and how many amount to buy*/
   const [idAndAmount, setIdAndAmount] = useState([]);

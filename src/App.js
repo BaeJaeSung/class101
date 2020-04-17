@@ -1,7 +1,7 @@
 import React, {useState, useCallback} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ShoppingList from './ShoppingList'
+import ShoppingList from './products/ShoppingList'
 import Cart from './cart/Cart'
 import Headers from './Headers'
 import Router from './Router'
@@ -185,6 +185,7 @@ const App = () => {
           <MenuItem><div onClick={() => onStateChange(true)}>카트</div></MenuItem>
           <MenuItem>제작자 : 배재성</MenuItem>
       </div>
+
 
       {myState? <Cart items={new_items} cartItems={cartItems} key="1"/> : <ShoppingList items={new_items} cartItems={cartItems} onChangeCart={onChangeCart} key="2"/>}
 
