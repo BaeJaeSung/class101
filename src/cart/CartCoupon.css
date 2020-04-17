@@ -1,0 +1,15 @@
+.Coupon{
+  display:flex;
+  flex-direction:column;
+  border: 4px double #000000;
+  border-radius: 10px 10px 10px 10px;
+  width:350px;
+  align:center;
+  margin:5px;
+  text-align:center;
+}
+.CouponContents{
+
+  margin-left: auto;
+  margin-right: auto;
+}

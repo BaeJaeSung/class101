@@ -2,9 +2,15 @@ import React, {useState, useCallback} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ShoppingList from './ShoppingList'
-import Cart from './Cart'
+import Cart from './cart/Cart'
 import Headers from './Headers'
+import Router from './Router'
 
+const MenuItem = ({active, children, to}) => (
+    <div className="menu-item">
+      {children}
+    </div>
+)
 /* merge sort */
 const merge = (left, right) => {
   var result = [];
@@ -48,6 +54,9 @@ const App = () => {
   /* use cart item id to find which item is selected */
   const [cartItems, setCartItems] = useState(['B9vUv0E0ibc0X55kVVLr']);
 
+  /* false for main, true for cart */
+  const [myState, setMyState] = useState(false);
+
   /* select item */
   const onChangeCart = useCallback(
     id => {
@@ -65,6 +74,14 @@ const App = () => {
       }
     }
   );
+
+  const onStateChange = useCallback(
+    tf => {
+      setMyState(tf);
+      console.log(myState);
+    }
+
+  )
 
   const [items, setItems] = useState([
     {
@@ -162,10 +179,16 @@ const App = () => {
 
   return (
     <div>
-      <Headers/>
-      <Cart items={new_items} cartItems={cartItems}/>
+      <Headers onStateChange={onStateChange}/>
+      <div className="menu">
+          <MenuItem><div onClick={() => onStateChange(false)}>상품 선택하기</div></MenuItem>
+          <MenuItem><div onClick={() => onStateChange(true)}>카트</div></MenuItem>
+          <MenuItem>제작자 : 배재성</MenuItem>
+      </div>
+
+      {myState? <Cart items={new_items} cartItems={cartItems} key="1"/> : <ShoppingList items={new_items} cartItems={cartItems} onChangeCart={onChangeCart} key="2"/>}
+
       <br/><br/><br/><br/>
-      <ShoppingList items={new_items} cartItems={cartItems} onChangeCart={onChangeCart} />
     </div>
   );
 }

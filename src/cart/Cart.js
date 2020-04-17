@@ -23,6 +23,8 @@ const Cart = ({items, cartItems}) => {
 
   const [result, setResult] = useState([]);
 
+  console.log("dfwfewfs");
+  console.log(cartItems);
   cartItems.map(cartItem => {
     if(items.find(item => cartItem == item.id) && !result.find(item => cartItem == item.id)){
       const new_item = items.filter(item => cartItem == item.id);
@@ -33,7 +35,7 @@ const Cart = ({items, cartItems}) => {
 
   return(
     <div>
-      <CartItemList cartItemResult={result} onChecked={onChecked} itemChecked={itemChecked}/>
+      <CartItemList cartItemResult={result} onChecked={onChecked} itemChecked={itemChecked} key="3"/>
     </div>
   );
 }

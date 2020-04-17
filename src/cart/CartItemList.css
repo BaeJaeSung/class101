@@ -1,0 +1,21 @@
+.CartItem{
+  display:flex;
+  flex-direction:row;
+  text-align:center;
+  align:center;
+
+}
+.Coupon{
+  display:flex;
+  flex-direction:row;
+  text-align:center;
+}
+.Pay{
+  display:flex;
+  flex-direction:row;
+  border: 4px double #aa0128;
+  border-radius: 10px 10px 10px 10px;
+  width:350px;
+  margin-left:auto;
+  margin-right:auto;
+}

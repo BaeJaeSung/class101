@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './CartResult.css';
 
 const CartResult = ({hap, prevHap, minusAmount}) => {
   return(
