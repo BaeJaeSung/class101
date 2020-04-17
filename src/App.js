@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import ShoppingList from './ShoppingList'
 import Cart from './Cart'
+import Headers from './Headers'
 
 const merge = (left, right) => {
   console.log("left : " + left + "right : " + right);
@@ -163,6 +164,7 @@ const App = () => {
   var new_items = mergeSort(items);
   return (
     <div>
+      <Headers/>
       <Cart items={new_items} cartItems={cartItems}/>
       <br/><br/><br/><br/>
       <ShoppingList items={new_items} cartItems={cartItems} onChangeCart={onChangeCart} />

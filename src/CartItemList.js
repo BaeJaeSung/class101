@@ -4,9 +4,10 @@ import './App.css';
 import './ShoppingList.css';
 import CartItem from './CartItem';
 import CartCoupon from './CartCoupon';
+import CartResult from './CartResult';
 
 const CartItemList = ({cartItemResult}) => {
-
+  const [hap, setHap] = useState(0);
   // coupons.js
   const coupons = [
     {
@@ -20,7 +21,6 @@ const CartItemList = ({cartItemResult}) => {
       discountAmount: 10000,
     }
   ];
-
 
   const [idAndAmount, setIdAndAmount] = useState([]);
 
@@ -41,8 +41,8 @@ const CartItemList = ({cartItemResult}) => {
       const arrIndex = idAndAmount.findIndex(item => item.id==id);
       const newIdAndAmount = idAndAmount;
       newIdAndAmount[arrIndex].Amount += 1;
-      setIdAndAmount([]);
       setIdAndAmount(newIdAndAmount);
+      setHap(0);
     }
   )
   const onMinus = useCallback(
@@ -53,9 +53,19 @@ const CartItemList = ({cartItemResult}) => {
       if(newIdAndAmount[arrIndex].Amount < 1)
         newIdAndAmount[arrIndex].Amount = 1;
       setIdAndAmount(newIdAndAmount);
+      setHap(0);
     }
   )
   console.log(cartItemResult);
+
+  var newHap = 0
+  idAndAmount.map(item => {
+    console.log(item.price + " : " + item.Amount);
+    newHap += parseInt(item.price) * parseInt(item.Amount);
+  })
+  if(hap !== newHap)
+    setHap(newHap);
+
 
   return(
     <div className="ShoppingList">
@@ -68,6 +78,8 @@ const CartItemList = ({cartItemResult}) => {
       {coupons.map(item => (
         <CartCoupon Coupon={item} />
       ))}
+
+      <CartResult hap={newHap} />
 
 
 

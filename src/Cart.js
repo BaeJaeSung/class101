@@ -5,6 +5,9 @@ import CartItemList from './CartItemList'
 
 
 const Cart = ({items, cartItems}) => {
+
+
+
   const [result, setResult] = useState([]);
 
   cartItems.map(cartItem => {

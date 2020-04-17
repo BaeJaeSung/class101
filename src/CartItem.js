@@ -9,7 +9,7 @@ const CartItem = ({cartItem, onPlus, onMinus, idAndAmount}) => {
   const [numToBuy, setNumToBuy] = useState(idAndAmount.find(item => item.id == id).Amount);
 
 
-  
+
 
 
   return(
@@ -31,17 +31,18 @@ const CartItem = ({cartItem, onPlus, onMinus, idAndAmount}) => {
       </div>
 
       <div className="NumberSelect">
-        <div className="ButtonMinus" onClick={() => {onMinus(id); {
-          if(numToBuy-1 >= 1)
-            setNumToBuy(numToBuy-1);
-        }}}>
+        <div className="ButtonMinus" onClick={() => {onMinus(id);setNumToBuy(idAndAmount.find(item => item.id == id).Amount)}}>
           <MdKeyboardArrowDown/>
         </div>
         <input className="NumberBuy" value={numToBuy}/>
-        <div className="ButtonPlus" onClick={() => {onPlus(id); setNumToBuy(numToBuy+1)}}>
+        <div className="ButtonPlus" onClick={() => {onPlus(id);setNumToBuy(idAndAmount.find(item => item.id == id).Amount)}}>
           <MdKeyboardArrowUp/>
         </div>
 
+      </div>
+      <div className="CheckBox">
+      //33,444 comma
+        <MdCheckBox/>
       </div>
 
       <br/>
