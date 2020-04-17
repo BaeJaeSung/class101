@@ -8,6 +8,10 @@ const CartItem = ({cartItem, onPlus, onMinus, idAndAmount}) => {
   const {id, title, coverImage, price, score} = cartItem;
   const [numToBuy, setNumToBuy] = useState(idAndAmount.find(item => item.id == id).Amount);
 
+
+  
+
+
   return(
     <div className="ShoppingItem" id={id}>
       <div className="ShoppingImg">

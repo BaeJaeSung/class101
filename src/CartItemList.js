@@ -3,12 +3,26 @@ import logo from './logo.svg';
 import './App.css';
 import './ShoppingList.css';
 import CartItem from './CartItem';
+import CartCoupon from './CartCoupon';
 
 const CartItemList = ({cartItemResult}) => {
-// reform array from n to 5 * k
-  const [idAndAmount, setIdAndAmount] = useState([
 
-  ]);
+  // coupons.js
+  const coupons = [
+    {
+      type: 'rate',
+      title: '10% 할인 쿠폰',
+      discountRate: 10,
+    },
+    {
+      type: 'amount',
+      title: '10,000원 할인 쿠폰',
+      discountAmount: 10000,
+    }
+  ];
+
+
+  const [idAndAmount, setIdAndAmount] = useState([]);
 
   cartItemResult.map(item => {
     if(!idAndAmount.find(elm => elm.id == item.id))
@@ -49,6 +63,12 @@ const CartItemList = ({cartItemResult}) => {
       {cartItemResult.map(cartItem => (
         <CartItem cartItem={cartItem} onPlus={onPlus} onMinus={onMinus} idAndAmount={idAndAmount} />
       ))}
+
+      {console.log("coupon" + coupons)}
+      {coupons.map(item => (
+        <CartCoupon Coupon={item} />
+      ))}
+
 
 
     </div>
