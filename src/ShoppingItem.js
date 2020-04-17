@@ -4,6 +4,10 @@ import './App.css';
 import './ShoppingItem.css';
 import {MdAddShoppingCart, MdRemoveShoppingCart} from 'react-icons/md';
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 const ShoppingItem = ({item, cartItems, onChangeCart}) => {
   const {id, title, coverImage, price, score} = item;
   const found = cartItems.find(elm => elm==id);
@@ -12,24 +16,24 @@ const ShoppingItem = ({item, cartItems, onChangeCart}) => {
   return(
     <div className="ShoppingItem" id={id}>
       <div className="ShoppingImg">
-      {coverImage}
-        <img src="{coverImage}" alt="상품 이미지"/>
+        <img src={coverImage} alt="상품 이미지" width="300" height="150"/>
       </div>
       <div className="ShoppingTitle">
         {title}
       </div>
       <div className="ShoppingScore">
-        {score}
+        Score : {numberWithCommas(score)}
       </div>
 
       <div className="ShoppingPrice">
-      //33,444 comma
-        {price}
+        {numberWithCommas(price)} 원
       </div>
 
-      <div className="ShoppingCart" onClick={() => onChangeCart(id)}>
+      <div className="ShoppingCart" onClick={() => onChangeCart(id)} align="center">
         {console.log(cartItems)}
-        {found? <MdRemoveShoppingCart/> : <MdAddShoppingCart/>}
+
+        {found? <div className="CartOut" align="center"><MdRemoveShoppingCart size="32"/></div>
+          : <div className="CartIn"><MdAddShoppingCart size="32"/></div>}
       </div>
 
       <br/>
