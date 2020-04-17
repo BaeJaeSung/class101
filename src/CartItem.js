@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import './ShoppingItem.css';
-import {MdAddShoppingCart, MdRemoveShoppingCart} from 'react-icons/md';
+import './CartItem.css';
+import {MdCheckBox, MdKeyboardArrowDown, MdKeyboardArrowUp} from 'react-icons/md';
 
-const CartItem = ({cartItem}) => {
+const CartItem = ({cartItem, onPlus, onMinus, idAndAmount}) => {
   const {id, title, coverImage, price, score} = cartItem;
+  const [numToBuy, setNumToBuy] = useState(idAndAmount.find(item => item.id == id).Amount);
 
   return(
     <div className="ShoppingItem" id={id}>
@@ -23,6 +24,20 @@ const CartItem = ({cartItem}) => {
       <div className="ShoppingPrice">
       //33,444 comma
         {price}
+      </div>
+
+      <div className="NumberSelect">
+        <div className="ButtonMinus" onClick={() => {onMinus(id); {
+          if(numToBuy-1 >= 1)
+            setNumToBuy(numToBuy-1);
+        }}}>
+          <MdKeyboardArrowDown/>
+        </div>
+        <input className="NumberBuy" value={numToBuy}/>
+        <div className="ButtonPlus" onClick={() => {onPlus(id); setNumToBuy(numToBuy+1)}}>
+          <MdKeyboardArrowUp/>
+        </div>
+
       </div>
 
       <br/>
