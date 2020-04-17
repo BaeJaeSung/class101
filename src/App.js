@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ShoppingList from './ShoppingList'
@@ -47,6 +47,21 @@ const mergeSort = (items) => {
 
 const App = () => {
 
+  const [cartItems, setCartItems] = useState(['B9vUv0E0ibc0X55kVVLr']);
+  const onChangeCart = useCallback(
+    id => {
+      if(cartItems.find(elm => elm==id)){
+        setCartItems(cartItems.filter(cartItem => cartItem !== id));
+      }else{
+        var newCartItems = [];
+        newCartItems = newCartItems.concat(cartItems);
+        newCartItems.push(id);
+        setCartItems(newCartItems);
+      }
+
+    }
+
+  );
 
   const [items, setItems] = useState([
     {
@@ -143,7 +158,7 @@ const App = () => {
   var new_items = mergeSort(items);
   return (
     <div>
-      <ShoppingList items={new_items} />
+      <ShoppingList items={new_items} cartItems={cartItems} onChangeCart={onChangeCart} />
     </div>
   );
 }

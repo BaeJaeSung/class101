@@ -2,9 +2,13 @@ import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import './ShoppingItem.css';
+import {MdAddShoppingCart, MdRemoveShoppingCart} from 'react-icons/md';
 
-const ShoppingItem = ({item}) => {
+const ShoppingItem = ({item, cartItems, onChangeCart}) => {
   const {id, title, coverImage, price, score} = item;
+  const found = cartItems.find(elm => elm==id);
+  var plusCart = 0;
+
   return(
     <div className="ShoppingItem" id={id}>
       <div className="ShoppingImg">
@@ -22,6 +26,12 @@ const ShoppingItem = ({item}) => {
       //33,444 comma
         {price}
       </div>
+
+      <div className="ShoppingCart" onClick={() => onChangeCart(id)}>
+        {console.log(cartItems)}
+        {found? <MdRemoveShoppingCart/> : <MdAddShoppingCart/>}
+      </div>
+
       <br/>
 
     </div>
