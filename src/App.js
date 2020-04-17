@@ -5,8 +5,8 @@ import ShoppingList from './ShoppingList'
 import Cart from './Cart'
 import Headers from './Headers'
 
+/* merge sort */
 const merge = (left, right) => {
-  console.log("left : " + left + "right : " + right);
   var result = [];
   while(left.length > 0 || right.length > 0){
     if(left.length > 0 && right.length > 0){
@@ -28,35 +28,34 @@ const merge = (left, right) => {
       right = right.slice(1,right.length);
     }
   }
-  console.log("result : " + result);
   return result;
 }
 
+
 const mergeSort = (items) => {
-  console.log("items : " + items);
   if(items.length <= 1){
     return items;
   }
-
   const half = items.length/2;
   var left = mergeSort(items.slice(0, half));
   var right = mergeSort(items.slice(half, items.length));
-
-  console.log(left);
-  console.log(right);
   return merge(left, right);
 }
 
+
 const App = () => {
 
+  /* use cart item id to find which item is selected */
   const [cartItems, setCartItems] = useState(['B9vUv0E0ibc0X55kVVLr']);
+
+  /* select item */
   const onChangeCart = useCallback(
     id => {
       if(cartItems.find(elm => elm==id)){
         setCartItems(cartItems.filter(cartItem => cartItem !== id));
       }else{
         if(cartItems.length >= 3){
-          //false
+          alert("3개 초과 상품을 담을 수 없습니다.");
         }else{
           var newCartItems = [];
           newCartItems = newCartItems.concat(cartItems);
@@ -64,9 +63,7 @@ const App = () => {
           setCartItems(newCartItems);
         }
       }
-
     }
-
   );
 
   const [items, setItems] = useState([
@@ -162,6 +159,7 @@ const App = () => {
   ]);
 
   var new_items = mergeSort(items);
+
   return (
     <div>
       <Headers/>

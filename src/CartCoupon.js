@@ -1,8 +1,4 @@
-import React, {useState, useCallback} from 'react';
-import logo from './logo.svg';
-import './App.css';
-import './ShoppingList.css';
-import CartItem from './CartItem';
+import React from 'react';
 import {MdCheckBox, MdCheckBoxOutlineBlank} from 'react-icons/md';
 
 

@@ -1,6 +1,4 @@
-import React, {useState, useCallback} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
 const Headers = () => {
   return(

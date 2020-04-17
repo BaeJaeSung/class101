@@ -1,6 +1,4 @@
-import React, {useState} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 import './ShoppingItem.css';
 import {MdAddShoppingCart, MdRemoveShoppingCart} from 'react-icons/md';
 

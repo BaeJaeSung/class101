@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
 import './CartItem.css';
 import {MdCheckBox, MdKeyboardArrowDown, MdKeyboardArrowUp, MdCheckBoxOutlineBlank} from 'react-icons/md';
 
@@ -11,9 +10,6 @@ const CartItem = ({cartItem, onPlus, onMinus, idAndAmount, onChecked}) => {
   const {id, title, coverImage, price, score} = cartItem;
   const [numToBuy, setNumToBuy] = useState(idAndAmount.find(item => item.id == id).Amount);
   const [isChecked, setIsChecked] = useState(false);
-
-
-
 
   return(
     <div className="ShoppingItem" id={id}>
@@ -35,7 +31,7 @@ const CartItem = ({cartItem, onPlus, onMinus, idAndAmount, onChecked}) => {
         <div className="ButtonMinus" onClick={() => {onMinus(id);setNumToBuy(idAndAmount.find(item => item.id == id).Amount)}}>
           <MdKeyboardArrowDown size="30"/>
         </div>
-        <input className="NumberBuy" value={numToBuy}/>
+        <input className="NumberBuy" value={numToBuy} disabled/>
         <div className="ButtonPlus" onClick={() => {onPlus(id);setNumToBuy(idAndAmount.find(item => item.id == id).Amount)}}>
           <MdKeyboardArrowUp size="30"/>
         </div>
@@ -44,9 +40,6 @@ const CartItem = ({cartItem, onPlus, onMinus, idAndAmount, onChecked}) => {
       <div className="CheckBox" onClick={() => {onChecked(id); setIsChecked(!isChecked)}}>
         {isChecked? <MdCheckBox size="30"/> : <MdCheckBoxOutlineBlank size="30"/>}
       </div>
-
-      <br/>
-
     </div>
   );
 };
