@@ -1,13 +1,16 @@
 import React, {useState} from 'react';
 import logo from './logo.svg';
-import './App.css';
 import './CartItem.css';
-import {MdCheckBox, MdKeyboardArrowDown, MdKeyboardArrowUp} from 'react-icons/md';
+import {MdCheckBox, MdKeyboardArrowDown, MdKeyboardArrowUp, MdCheckBoxOutlineBlank} from 'react-icons/md';
 
-const CartItem = ({cartItem, onPlus, onMinus, idAndAmount}) => {
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+const CartItem = ({cartItem, onPlus, onMinus, idAndAmount, onChecked}) => {
   const {id, title, coverImage, price, score} = cartItem;
   const [numToBuy, setNumToBuy] = useState(idAndAmount.find(item => item.id == id).Amount);
-
+  const [isChecked, setIsChecked] = useState(false);
 
 
 
@@ -15,34 +18,31 @@ const CartItem = ({cartItem, onPlus, onMinus, idAndAmount}) => {
   return(
     <div className="ShoppingItem" id={id}>
       <div className="ShoppingImg">
-      {coverImage}
-        <img src="{coverImage}" alt="상품 이미지"/>
+        <img src={coverImage} alt="상품 이미지" width="300" height="150"/>
       </div>
       <div className="ShoppingTitle">
         {title}
       </div>
       <div className="ShoppingScore">
-        {score}
+        Score : {numberWithCommas(score)}
       </div>
 
       <div className="ShoppingPrice">
-      //33,444 comma
-        {price}
+        {numberWithCommas(price)} 원
       </div>
 
       <div className="NumberSelect">
         <div className="ButtonMinus" onClick={() => {onMinus(id);setNumToBuy(idAndAmount.find(item => item.id == id).Amount)}}>
-          <MdKeyboardArrowDown/>
+          <MdKeyboardArrowDown size="30"/>
         </div>
         <input className="NumberBuy" value={numToBuy}/>
         <div className="ButtonPlus" onClick={() => {onPlus(id);setNumToBuy(idAndAmount.find(item => item.id == id).Amount)}}>
-          <MdKeyboardArrowUp/>
+          <MdKeyboardArrowUp size="30"/>
         </div>
 
       </div>
-      <div className="CheckBox">
-      //33,444 comma
-        <MdCheckBox/>
+      <div className="CheckBox" onClick={() => {onChecked(id); setIsChecked(!isChecked)}}>
+        {isChecked? <MdCheckBox size="30"/> : <MdCheckBoxOutlineBlank size="30"/>}
       </div>
 
       <br/>

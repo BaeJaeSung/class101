@@ -1,4 +1,22 @@
 .NumberSelect{
   display:flex;
   flex-direction:row;
+  align-items:center;
+  text-align:center;
+  align:center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ShoppingItem{
+  display:flex;
+  flex-direction:column;
+  border: 4px double #1C6EA4;
+  border-radius: 10px 10px 10px 10px;
+  width:350px;
+  height:350px;
+  align:center;
+  margin:5px;
+  text-align:center;
+
+
 }

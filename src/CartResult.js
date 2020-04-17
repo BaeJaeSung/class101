@@ -4,12 +4,13 @@ import './App.css';
 import './ShoppingList.css';
 
 
-const CartResult = ({hap}) => {
+const CartResult = ({hap, prevHap, minusAmount}) => {
 
 
   return(
     <div className="CartResult">
-      합계 : {hap}
+    {hap>0? "결제 금액 : " + prevHap + " - " + minusAmount + " = " + hap : "상품을 선택해 주세요."}
+      
 
     </div>
   )
